@@ -1,0 +1,38 @@
+name: base
+window:
+  window_frames: 256
+  stride_frames: 32
+encoder:
+  kind: wavlm
+  checkpoint: ''
+  output_hz: 25
+  frozen: true
+adapter:
+  downsample_k: 4
+  hidden_dim: 2048
+llm:
+  model: Qwen/Qwen2.5-0.5B-Instruct
+  lora_rank: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  lora_targets:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  system_prompt: You are a voice activity detector.
+  user_prompt: Has the user finished speaking? Answer 0 (continue) or 1 (stop).
+train:
+  epochs: 1
+  batch_size: 64
+  lr: 5.0e-05
+  warmup_ratio: 0.03
+  lr_schedule: cosine
+  grad_accum: 1
+  seed: 1234
+  supervise_last_chunk_only: true
+data:
+  root: /mnt/localssd/svad/data
+  sample_rate: 24000
+  timeout_complete_ms: 400
+  timeout_incomplete_ms: 1000

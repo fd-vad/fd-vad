@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fd-vad"
+version = "0.0.1"
+description = "FD-VAD: streaming semantic endpoint detection for full-duplex speech"
+requires-python = ">=3.10"
+dependencies = ["pyyaml", "numpy"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

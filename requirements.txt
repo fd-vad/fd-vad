@@ -1,0 +1,8 @@
+torch>=2.1
+torchaudio>=2.1
+transformers>=4.44
+peft>=0.11
+soundfile
+numpy
+pyyaml
+huggingface_hub
